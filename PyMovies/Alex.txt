@@ -1,0 +1,4 @@
+Alex
+The Car,Anime,False
+The Dog,Anime,False
+The Deer,Anime,False

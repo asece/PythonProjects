@@ -1,0 +1,401 @@
+package IF1.DiagnosticsDIAPI
+
+------------------------------------------------------------------------
+	method getDataContainer
+in:			DataContainerID dataContainerID
+			Int16 clientID
+out:			DataContainer returnResult
+
+------------------------------------------------------------------------
+	method getGlobalConfiguration
+in:			Int16 clientID
+out:			GlobalConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setGlobalConfiguration fireAndForget
+in:			GlobalConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getGeneralSettingsConfiguration
+in:			Int16 clientID
+out:			GeneralSettingsConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setGeneralSettingsConfiguration fireAndForget
+in:			GeneralSettingsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getGeneralSettingsDefaultConfiguration
+in:			Int16 clientID
+out:			GeneralSettingsConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setGeneralSettingsDefaultConfiguration fireAndForget
+in:			GeneralSettingsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getSpeedometerConfiguration
+in:			Int16 clientID
+out:			SpeedometerConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setSpeedometerConfiguration fireAndForget
+in:			SpeedometerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getRevMeterConfiguration
+in:			Int16 clientID
+out:			RevMeterConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setRevMeterConfiguration fireAndForget
+in:			RevMeterConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getOdometerConfiguration
+in:			Int16 clientID
+out:			OdometerConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setOdometerConfiguration fireAndForget
+in:			OdometerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getIndicatorsConfiguration
+in:			Int16 clientID
+out:			IndicatorsConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setIndicatorsConfiguration fireAndForget
+in:			IndicatorsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getTransmissionConfiguration
+in:			Int16 clientID
+out:			TransmissionConfiguration returnResult
+
+------------------------------------------------------------------------
+	method getAcousticOutputConfiguration
+in:			Int16 clientID
+out:			AcousticOutputConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setAcousticOutputConfiguration fireAndForget
+in:			AcousticOutputConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getRollerTestConfiguration
+in:			Int16 clientID
+out:			RollerTestConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setRollerTestConfiguration fireAndForget
+in:			RollerTestConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getHybridConfiguration
+in:			Int16 clientID
+out:			HybridConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setHybridConfiguration fireAndForget
+in:			HybridConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getAdBlueConfiguration
+in:			Int16 clientID
+out:			AdBlueConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setAdBlueConfiguration fireAndForget
+in:			AdBlueConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getSeatbeltsAndDoorsConfiguration
+in:			Int16 clientID
+out:			SeatbeltsAndDoorsConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setSeatbeltsAndDoorsConfiguration fireAndForget
+in:			SeatbeltsAndDoorsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getFTWConfiguration
+in:			Int16 clientID
+out:			FTWConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setFTWConfiguration fireAndForget
+in:			FTWConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getLDPConfiguration
+in:			Int16 clientID
+out:			LDPConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setLDPConfiguration fireAndForget
+in:			LDPConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getAssystConfiguration
+in:			Int16 clientID
+out:			AssystConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setAssystConfiguration fireAndForget
+in:			AssystConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getBSMConfiguration
+in:			Int16 clientID
+out:			BSMConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setBSMConfiguration fireAndForget
+in:			BSMConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getSpecialPurposeVehicleICConfiguration
+in:			Int16 clientID
+out:			SpecialPurposeVehicleICConfiugration returnResult
+
+------------------------------------------------------------------------
+	method setSpecialPurposeVehicleICConfiguration fireAndForget
+in:			SpecialPurposeVehicleICConfiugration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getTripComputerConfiguration
+in:			Int16 clientID
+out:			TripComputerConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setTripComputerConfiguration fireAndForget
+in:			TripComputerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getTSAConfiguration
+in:			Int16 clientID
+out:			TSAConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setTSAConfiguration fireAndForget
+in:			TSAConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getHUDConfiguration
+in:			Int16 clientID
+out:			HUDConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setHUDConfiguration fireAndForget
+in:			HUDConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getHUDWarpingConfiguration
+in:			Int16 clientID
+out:			HUDWarpConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setHUDWarpingConfiguration fireAndForget
+in:			HUDWarpConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getHUDWhitePointConfiguration
+in:			Int16 clientID
+out:			HUDWhitePointConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setHUDWhitePointConfiguration fireAndForget
+in:			HUDWhitePointConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getFuelLevelConfiguration
+in:			Int16 clientID
+out:			FuelLevelConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setFuelLevelConfiguration fireAndForget
+in:			FuelLevelConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getOffroadConfiguration
+in:			Int16 clientID
+out:			OffroadConfiguration returnResult
+
+------------------------------------------------------------------------
+	method setOffroadConfiguration fireAndForget
+in:			OffroadConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	method getGazeControlConfiguration
+in:			Int16 clientID
+out:			GazeControlConfiguration returnResult
+
+------------------------------------------------------------------------
+	method subscribe
+in:			Int16 clientID
+
+------------------------------------------------------------------------
+	method unsubscribe
+in:			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast dataContainerChanged
+out:			DataContainer newValue
+			DataContainerID dataContainerID
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast globalConfigurationChanged
+out:			GlobalConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast generalSettingsConfigurationChanged
+out:			GeneralSettingsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast generalSettingsDefaultConfigurationChanged
+out:			GeneralSettingsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast speedometerConfigurationChanged
+out:			SpeedometerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast revMeterConfigurationChanged
+out:			RevMeterConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast odometerConfigurationChanged
+out:			OdometerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast indicatorsConfigurationChanged
+out:			IndicatorsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast transmissionConfigurationChanged
+out:			TransmissionConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast acousticOutputConfigurationChanged
+out:			AcousticOutputConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast rollerTestConfigurationChanged
+out:			RollerTestConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast hybridConfigurationChanged
+out:			HybridConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast adBlueConfigurationChanged
+out:			AdBlueConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast seatbeltsAndDoorsConfigurationChanged
+out:			SeatbeltsAndDoorsConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast fTWConfigurationChanged
+out:			FTWConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast lDPConfigurationChanged
+out:			LDPConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast assystConfigurationChanged
+out:			AssystConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast bSMConfigurationChanged
+out:			BSMConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast specialPurposeVehicleICConfigurationChanged
+out:			SpecialPurposeVehicleICConfiugration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast tripComputerConfigurationChanged
+out:			TripComputerConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast tSAConfigurationChanged
+out:			TSAConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast hUDConfigurationChanged
+out:			HUDConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast hUDWarpingConfigurationChanged
+out:			HUDWarpConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast hUDWhitePointConfigurationChanged
+out:			HUDWhitePointConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast fuelLevelConfigurationChanged
+out:			FuelLevelConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast offroadConfigurationChanged
+out:			OffroadConfiguration newValue
+			Int16 clientID
+
+------------------------------------------------------------------------
+	broadcast gazeControlConfigurationChanged
+out:			GazeControlConfiguration newValue
+			Int16 clientID

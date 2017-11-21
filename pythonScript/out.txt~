@@ -1,0 +1,80 @@
+	method getDataContainer
+	method getGlobalConfiguration
+	method setGlobalConfiguration fireAndForget
+	method getGeneralSettingsConfiguration
+	method setGeneralSettingsConfiguration fireAndForget
+	method getGeneralSettingsDefaultConfiguration
+	method setGeneralSettingsDefaultConfiguration fireAndForget
+	method getSpeedometerConfiguration
+	method setSpeedometerConfiguration fireAndForget
+	method getRevMeterConfiguration
+	method setRevMeterConfiguration fireAndForget
+	method getOdometerConfiguration
+	method setOdometerConfiguration fireAndForget
+	method getIndicatorsConfiguration
+	method setIndicatorsConfiguration fireAndForget
+	method getTransmissionConfiguration
+	method getAcousticOutputConfiguration
+	method setAcousticOutputConfiguration fireAndForget
+	method getRollerTestConfiguration
+	method setRollerTestConfiguration fireAndForget
+	method getHybridConfiguration
+	method setHybridConfiguration fireAndForget
+	method getAdBlueConfiguration
+	method setAdBlueConfiguration fireAndForget
+	method getSeatbeltsAndDoorsConfiguration
+	method setSeatbeltsAndDoorsConfiguration fireAndForget
+	method getFTWConfiguration
+	method setFTWConfiguration fireAndForget
+	method getLDPConfiguration
+	method setLDPConfiguration fireAndForget
+	method getAssystConfiguration
+	method setAssystConfiguration fireAndForget
+	method getBSMConfiguration
+	method setBSMConfiguration fireAndForget
+	method getSpecialPurposeVehicleICConfiguration
+	method setSpecialPurposeVehicleICConfiguration fireAndForget
+	method getTripComputerConfiguration
+	method setTripComputerConfiguration fireAndForget
+	method getTSAConfiguration
+	method setTSAConfiguration fireAndForget
+	method getHUDConfiguration
+	method setHUDConfiguration fireAndForget
+	method getHUDWarpingConfiguration
+	method setHUDWarpingConfiguration fireAndForget
+	method getHUDWhitePointConfiguration
+	method setHUDWhitePointConfiguration fireAndForget
+	method getFuelLevelConfiguration
+	method setFuelLevelConfiguration fireAndForget
+	method getOffroadConfiguration
+	method setOffroadConfiguration fireAndForget
+	method getGazeControlConfiguration
+	method subscribe
+	method unsubscribe
+	broadcast dataContainerChanged
+	broadcast globalConfigurationChanged
+	broadcast generalSettingsConfigurationChanged
+	broadcast generalSettingsDefaultConfigurationChanged
+	broadcast speedometerConfigurationChanged
+	broadcast revMeterConfigurationChanged
+	broadcast odometerConfigurationChanged
+	broadcast indicatorsConfigurationChanged
+	broadcast transmissionConfigurationChanged
+	broadcast acousticOutputConfigurationChanged
+	broadcast rollerTestConfigurationChanged
+	broadcast hybridConfigurationChanged
+	broadcast adBlueConfigurationChanged
+	broadcast seatbeltsAndDoorsConfigurationChanged
+	broadcast fTWConfigurationChanged
+	broadcast lDPConfigurationChanged
+	broadcast assystConfigurationChanged
+	broadcast bSMConfigurationChanged
+	broadcast specialPurposeVehicleICConfigurationChanged
+	broadcast tripComputerConfigurationChanged
+	broadcast tSAConfigurationChanged
+	broadcast hUDConfigurationChanged
+	broadcast hUDWarpingConfigurationChanged
+	broadcast hUDWhitePointConfigurationChanged
+	broadcast fuelLevelConfigurationChanged
+	broadcast offroadConfigurationChanged
+	broadcast gazeControlConfigurationChanged
