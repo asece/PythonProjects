@@ -1,4 +1,4 @@
-#About
+About
 
 In order to remove all of the unwanted text from the fidl file and
 leave only the methods with "in" and "out" you have to:
