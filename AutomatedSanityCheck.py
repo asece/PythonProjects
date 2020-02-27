@@ -1,5 +1,7 @@
 import os
+import time
 from datetime import date
+CPP_EXT = ".cpp"
 
 def line_prepender(filename, line, line0):
     with open(filename, 'r+') as f:
@@ -24,10 +26,73 @@ line = line0 + str(today)
 
 os.chdir("Cpp-Area")
 
+i = 0
 for file in os.listdir(os.getcwd()):
-    if file.endswith(".cpp"):
-        print ("Checking",file)
-        line_prepender(file, line,line0)
+    if (i%5==0):
+        if file.endswith(CPP_EXT):
+            print ("Working on",i,file)
+            line_prepender(file, line,line0)  
+    i = i+1
+
+os.system('"git status"')
+os.system('"git add -A"')
+os.system('"git commit -m "Automated Sanity Check"')
+os.system('"git push"')
+time.sleep(5)
+
+i = 0
+for file in os.listdir(os.getcwd()):
+    if (i%5==1):
+            if file.endswith(CPP_EXT):
+                print ("Working on",i,file)
+                line_prepender(file, line,line0)
+    i = i+1
+     
+os.system('"git status"')
+os.system('"git add -A"')
+os.system('"git commit -m "Automated Sanity Check"')
+os.system('"git push"')
+time.sleep(5)
+   
+i = 0
+for file in os.listdir(os.getcwd()):
+    if (i%5==2):
+            if file.endswith(CPP_EXT):
+                print ("Working on",i,file)
+                line_prepender(file, line,line0)
+    i = i+1
+    
+os.system('"git status"')
+os.system('"git add -A"')
+os.system('"git commit -m "Automated Sanity Check"')
+os.system('"git push"')
+time.sleep(5)
+    
+i = 0
+for file in os.listdir(os.getcwd()):
+    if (i%5==3):
+            if file.endswith(CPP_EXT):
+                print ("Working on",i,file)
+                line_prepender(file, line,line0)
+    i = i+1
+    os.system('"git status"')
+    os.system('"git add -A"')
+    os.system('"git commit -m "Automated Sanity Check"')
+    os.system('"git push"')
+    
+os.system('"git status"')
+os.system('"git add -A"')
+os.system('"git commit -m "Automated Sanity Check"')
+os.system('"git push"')
+time.sleep(5)
+
+i = 0
+for file in os.listdir(os.getcwd()):
+    if (i%5==4):
+            if file.endswith(CPP_EXT):
+                print ("Working on",i,file)
+                line_prepender(file, line,line0)
+    i = i+1
 
 os.system('"git status"')
 os.system('"git add -A"')
