@@ -75,10 +75,6 @@ for file in os.listdir(os.getcwd()):
                 print ("Working on",i,file)
                 line_prepender(file, line,line0)
     i = i+1
-    os.system('"git status"')
-    os.system('"git add -A"')
-    os.system('"git commit -m "Automated Sanity Check"')
-    os.system('"git push"')
     
 os.system('"git status"')
 os.system('"git add -A"')
