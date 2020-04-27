@@ -8,10 +8,8 @@ import time
 from datetime import date
 import Helper.FilePostHelper as file 
 
+
 #os.chdir("Cpp-Area")
-
-#file.postToGithubInBatches()
-
-#file.testFileParsing()
-
+os.chdir("..")
+#print (os.path.abspath(os.curdir))
 file.recursiveScan()

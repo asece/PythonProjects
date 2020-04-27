@@ -5,7 +5,7 @@ import Helper.FileEditorHelper as fileEditor
 
 BATCHES = 6
 MIN_FILES_FOR_BATCH = 5 
-EXTENSIONS = [".c",",h",".cpp",".hpp",".py",".js",".cs"]
+EXTENSIONS = [".c",",h",".cpp",".hpp"] #,".py",".js",".cs"
 IGNORE_FILE = "dev_"
 
 today = date.today()
@@ -56,14 +56,15 @@ def testFileParsingInBatches():
 
 def recursiveScan():
     entries = os.scandir()
-    
+
     if(len([name for name in os.listdir('.') if os.path.isfile(name)]) > MIN_FILES_FOR_BATCH):
-        testFileParsingInBatches()
+       testFileParsingInBatches()
     else:
         testFileParsing()
 
     for entry in entries:
         if(os.path.isdir(entry.name) and IGNORE_FILE not in entry.name):
-            print("Changing to", entry.name)
+            #print("Changing to", entry.name)
             os.chdir(entry.name)
             recursiveScan()
+    os.chdir("..")
