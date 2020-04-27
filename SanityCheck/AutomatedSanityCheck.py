@@ -6,9 +6,12 @@
 import os
 import time
 from datetime import date
-from Helper import GithubHelper as git 
+import Helper.FilePostHelper as file 
 
 #os.chdir("Cpp-Area")
 
-#git.postToGithubInBatches()
-git.testFileParsing()
+#file.postToGithubInBatches()
+
+#file.testFileParsing()
+
+file.recursiveScan()
