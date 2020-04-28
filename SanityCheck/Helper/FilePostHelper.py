@@ -5,12 +5,14 @@ import Helper.FileEditorHelper as fileEditor
 
 BATCHES = 6
 MIN_FILES_FOR_BATCH = 5 
-EXTENSIONS = [".c",",h",".cpp",".hpp"] #,".py",".js",".cs"
+EXTENSIONS = [".c",",h",".cpp",".hpp",".py"] #,".js",".cs"
 IGNORE_FILE = "dev_"
 
 today = date.today()
 print("Running check for date:", today)
-line0 = "//  Last sanity check: "
+pre_line_C = "//"
+pre_line_Py = "#"
+line0 = "  Last sanity check: "
 line = line0 + str(today)
 
 def postToGithubInBatches():
@@ -20,6 +22,10 @@ def postToGithubInBatches():
             if (i%BATCHES == x):
                 if file.endswith(tuple(EXTENSIONS)):
                     print ("Working on ",i,file)
+                    if(".py" in file):
+                        line = pre_line_Py + line0 + str(today)
+                    else:
+                        line = pre_line_C + line0 + str(today)
                     fileEditor.insertDateOfCheck(file, line,line0) 
             i =i+1
         os.system('"git status"')
@@ -32,6 +38,10 @@ def postToGithub():
     for file in os.listdir(os.getcwd()):
             if file.endswith(tuple(EXTENSIONS)):
                 print ("Working on ",file)
+                if(".py" in file):
+                    line = pre_line_Py + line0 + str(today)
+                else:
+                    line = pre_line_C + line0 + str(today)
                 fileEditor.insertDateOfCheck(file, line,line0) 
         
     os.system('"git status"')
@@ -44,6 +54,12 @@ def testFileParsing():
     for file in os.listdir(os.getcwd()):
             if file.endswith(tuple(EXTENSIONS)):
                 print ("Working on - ",file)
+                if(".py" in file):
+                    line = pre_line_Py + line0 + str(today)
+                    print(line)
+                else:
+                    line = pre_line_C + line0 + str(today)
+                    print(line)
 
 def testFileParsingInBatches():
     for x in range(BATCHES):
@@ -52,6 +68,12 @@ def testFileParsingInBatches():
             if (i%BATCHES == x):
                 if file.endswith(tuple(EXTENSIONS)):
                     print (i, "Working on - ",file)
+                    if(".py" in file):
+                        line = pre_line_Py + line0 + str(today)
+                        print(line)
+                    else:
+                        line = pre_line_C + line0 + str(today)
+                        print(line)
             i=i+1
 
 def recursiveScan():
