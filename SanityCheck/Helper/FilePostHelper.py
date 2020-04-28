@@ -1,11 +1,13 @@
+#  Last sanity check: 2020-04-28
 import os
 import time
+import subprocess
 from datetime import date
 import Helper.FileEditorHelper as fileEditor
 
 BATCHES = 6
 MIN_FILES_FOR_BATCH = 5 
-EXTENSIONS = [".c",",h",".cpp",".hpp",".py"] #,".js",".cs"
+EXTENSIONS = [".c",",h",".cpp",".hpp",".py",".js",".cs"] #
 IGNORE_FILE = "dev_"
 
 today = date.today()
@@ -28,11 +30,17 @@ def postToGithubInBatches():
                         line = pre_line_C + line0 + str(today)
                     fileEditor.insertDateOfCheck(file, line,line0) 
             i =i+1
-        os.system('"git status"')
-        os.system('"git add -A"')
-        os.system('"git commit -m "Automated Sanity Check"')
-        os.system('"git push"')
-        time.sleep(5)
+        os.system('"git pull"')
+        cmd = "git status --porcelain"
+        try:
+            res = subprocess.check_output(cmd)
+            if(len(res) != 0):
+                os.system('"git add -A"')
+                os.system('"git commit -m "Automated Sanity Check"')
+                os.system('"git push"')
+                time.sleep(5)
+        except:
+            print("x")
 
 def postToGithub():
     for file in os.listdir(os.getcwd()):
@@ -43,12 +51,17 @@ def postToGithub():
                 else:
                     line = pre_line_C + line0 + str(today)
                 fileEditor.insertDateOfCheck(file, line,line0) 
-        
-    os.system('"git status"')
-    os.system('"git add -A"')
-    os.system('"git commit -m "Automated Sanity Check"')
-    os.system('"git push"')
-    time.sleep(5)
+    os.system('"git pull"')       
+    cmd = "git status --porcelain"
+    try:
+        res = subprocess.check_output(cmd)
+        if(len(res) != 0):
+            os.system('"git add -A"')
+            os.system('"git commit -m "Automated Sanity Check"')
+            os.system('"git push"')
+            time.sleep(5)
+    except:
+        print("x")
 
 def testFileParsing():
     for file in os.listdir(os.getcwd()):
@@ -80,9 +93,13 @@ def recursiveScan():
     entries = os.scandir()
 
     if(len([name for name in os.listdir('.') if os.path.isfile(name)]) > MIN_FILES_FOR_BATCH):
-       testFileParsingInBatches()
+       # Use for testing:
+       # testFileParsingInBatches()
+       postToGithubInBatches()
     else:
-        testFileParsing()
+        # Use for testing:
+        # testFileParsing()
+        postToGithub()
 
     for entry in entries:
         if(os.path.isdir(entry.name) and IGNORE_FILE not in entry.name):

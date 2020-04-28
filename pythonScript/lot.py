@@ -1,3 +1,4 @@
+#  Last sanity check: 2020-04-28
 import random
 print("WELCOME TO THE LOTTERY APP!")
 def menu():

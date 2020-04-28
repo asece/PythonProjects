@@ -1,3 +1,4 @@
+#  Last sanity check: 2020-04-28
 user_nr_init = input("Insert yout numbers with , : ")
 user_nr = user_nr_init.split(",")
 
