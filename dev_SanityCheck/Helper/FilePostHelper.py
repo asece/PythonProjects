@@ -9,11 +9,13 @@ BATCHES = 6
 MIN_FILES_FOR_BATCH = 5 
 EXTENSIONS = [".c",",h",".cpp",".hpp",".py",".js",".cs"] #
 IGNORE_FILE = "dev_"
+IGNORE_LIST = ["dev_", "__","."]
 
 today = date.today()
-print("Running check for date:", today)
 pre_line_C = "//"
 pre_line_Py = "#"
+
+print("Running check for date:", today)
 line0 = "  Last sanity check: "
 line = line0 + str(today)
 
@@ -91,6 +93,12 @@ def testFileParsingInBatches():
                         print(line)
             i=i+1
 
+def ignoreFile(folder):
+    for ignore in IGNORE_LIST:
+        if(ignore in folder):
+            return True
+    
+
 def recursiveScan():
     entries = os.scandir()
 
@@ -105,8 +113,8 @@ def recursiveScan():
 
     for entry in entries:
         if(os.path.isdir(entry.name)):
-            if(IGNORE_FILE not in entry.name):
-                # print("Changing to", entry.name)
+            if(not ignoreFile(entry.name)):
+                print("Changing to", entry.name)
                 os.chdir(entry.name)
                 recursiveScan()
                 os.chdir("..")
