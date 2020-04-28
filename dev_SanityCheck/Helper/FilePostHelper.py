@@ -35,6 +35,7 @@ def postToGithubInBatches():
         try:
             res = subprocess.check_output(cmd)
             if(len(res) != 0):
+                os.system("git status")
                 os.system('"git add -A"')
                 os.system('"git commit -m "Automated Sanity Check"')
                 os.system('"git push"')
@@ -56,6 +57,7 @@ def postToGithub():
     try:
         res = subprocess.check_output(cmd)
         if(len(res) != 0):
+            os.system("git status")
             os.system('"git add -A"')
             os.system('"git commit -m "Automated Sanity Check"')
             os.system('"git push"')
@@ -102,8 +104,9 @@ def recursiveScan():
         postToGithub()
 
     for entry in entries:
-        if(os.path.isdir(entry.name) and IGNORE_FILE not in entry.name):
-            #print("Changing to", entry.name)
-            os.chdir(entry.name)
-            recursiveScan()
-    os.chdir("..")
+        if(os.path.isdir(entry.name)):
+            if(IGNORE_FILE not in entry.name):
+                # print("Changing to", entry.name)
+                os.chdir(entry.name)
+                recursiveScan()
+                os.chdir("..")
