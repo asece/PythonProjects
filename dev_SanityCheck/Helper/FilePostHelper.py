@@ -40,7 +40,7 @@ def postToGithubInBatches():
                 os.system('"git push"')
                 time.sleep(5)
         except:
-            print("x")
+            print()
 
 def postToGithub():
     for file in os.listdir(os.getcwd()):
@@ -61,7 +61,7 @@ def postToGithub():
             os.system('"git push"')
             time.sleep(5)
     except:
-        print("x")
+        print()
 
 def testFileParsing():
     for file in os.listdir(os.getcwd()):
