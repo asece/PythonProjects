@@ -1,4 +1,4 @@
-#  Last sanity check: 2020-04-28
+#  Last sanity check: 2020-04-29
 class Movie:
     def __init__(self, name, genre, watched):
         self.name = name
