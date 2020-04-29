@@ -1,4 +1,4 @@
-#  Last sanity check: 2020-04-28
+#  Last sanity check: 2020-04-29
 import random
 print("WELCOME TO THE LOTTERY APP!")
 def menu():
