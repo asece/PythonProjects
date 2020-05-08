@@ -1,5 +1,7 @@
 import os
 import shutil
+from datetime import date
+from datetime import datetime
 
 import openpyxl
 import PyPDF2
@@ -7,6 +9,12 @@ from PyPDF2 import PdfFileWriter, PdfFileReader, PdfFileMerger
 
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import A4
+from reportlab.pdfbase import pdfmetrics
+from reportlab.pdfbase.ttfonts import TTFont
+
+pdfmetrics.registerFont(TTFont('HelveticaNeue', 'HelveticaNeueCyr-Light.ttf'))
+
+today = date.today()
 
 #make a copy of the invoice to work with
 src_dir="blank_invoice.pdf"
@@ -42,7 +50,7 @@ def checkIfCompany(field):
     else:
         return False
 
-
+# get customer and product data
 customer = clientSheet.cell(row = 2, column = 1).value
 print(customer, end='  ')
 if(checkIfCompany(clientSheet.cell(row = 2, column = 2).value)):
@@ -59,10 +67,38 @@ productPrice = productSheet.cell(row = 2, column = 3).value
 
 print(productId, ' ', productName, ' ', productPrice)
 
+#g get invoice series
+invoiceSeriesFile = open("invoice_series.txt","r")
+invoiceSeries = invoiceSeriesFile.readline()
+invoiceSeriesFile.close()
+print("Invoice series: ", invoiceSeries)
+
+# get invoice number
+invoiceNumberFile = open("invoice_number.txt", "r")
+invoiceNumber = invoiceNumberFile.readline()
+invoiceNumberFile.close()
+print("Invoice number: ", invoiceNumber)
+
+# update invoice number
+invoiceNumberFile = open("invoice_number.txt", "w")
+newNr = int(invoiceNumber)
+newNr = newNr + 1
+invoiceNumberFile.write(str(newNr))
+invoiceNumberFile.close()
+print("New invoice number: ", newNr)
 
 # create a new PDF with Reportlab
 can = canvas.Canvas("TextToAdd.pdf", pagesize=A4)
-can.drawString(270, 695, "Seria FAS Nr 11")
+can.setFont('HelveticaNeue', 11)
+serialAndDate = "seria AAA Nr " + invoiceNumber
+can.drawString(283, 697, serialAndDate)
+
+dateTimeObj = datetime.now()
+timestampStr = dateTimeObj.strftime("%d-%m-%Y")
+can.drawString(291, 682, timestampStr)
+
+print('Current Timestamp : ', timestampStr)
+
 can.save()
 
 
