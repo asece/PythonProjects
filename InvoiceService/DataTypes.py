@@ -10,3 +10,15 @@ class Customer:
     CUI = ''
     nrInreg = ''
     address = ''
+
+class AllCustomers:
+    name = []
+    isCompany = []
+    CUI = []
+    nrInreg = []
+    address = []
+
+class AllProducts:
+    productId = []
+    productName = []
+    productPrice = []

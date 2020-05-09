@@ -6,6 +6,7 @@ import PyPDF2
 import sys
 
 import DataTypes
+import FileUtils as file
 
 from datetime import datetime
 from PyPDF2 import PdfFileWriter, PdfFileReader, PdfFileMerger
@@ -31,24 +32,12 @@ def MakeInvoice(products, customer, shippingCost):
     pdfmetrics.registerFont(TTFont('HelveticaNeue', 'HelveticaNeueCyr-Light.ttf'))
 
     # get invoice series
-    invoiceSeriesFile = open("invoice_series.txt","r")
-    invoiceSeries = invoiceSeriesFile.readline()
-    invoiceSeriesFile.close()
+    invoiceSeries = file.getInvoiceSeries()
     print("Invoice series: ", invoiceSeries)
 
     # get invoice number
-    invoiceNumberFile = open("invoice_number.txt", "r")
-    invoiceNumber = invoiceNumberFile.readline()
-    invoiceNumberFile.close()
+    invoiceNumber = file.getInvoiceNumber()
     print("Invoice number: ", invoiceNumber)
-
-    # update invoice number
-    invoiceNumberFile = open("invoice_number.txt", "w")
-    newNr = int(invoiceNumber)
-    newNr = newNr + 1
-    invoiceNumberFile.write(str(newNr))
-    invoiceNumberFile.close()
-    print("New invoice number: ", newNr)
 
     #make a copy of the invoice to work with
     src_dir="blank_invoice.pdf"
@@ -116,7 +105,8 @@ def MakeInvoice(products, customer, shippingCost):
             prettySpace = prettySpace + 1
         can.drawRightString(470, y, str(products.productPrice[it]))
         can.drawString(350, y, str(products.productQuantity[it]))
-        can.drawString(295, y, UM_0)    
+        can.drawString(295, y, UM_0)  
+
         # multiply quantiy with price
         finalPrice.insert(it, products.productQuantity[it] * products.productPrice[it])
         can.drawRightString(PRICE_X_INDENT_MOST_RIGHT, y, str(finalPrice[it]))
@@ -154,3 +144,6 @@ def MakeInvoice(products, customer, shippingCost):
     outputStream = open("ClientInvoice.pdf", "wb")
     output.write(outputStream)
     outputStream.close()
+
+    # increment the invoice number
+    file.incrementInvoiceNumber()
