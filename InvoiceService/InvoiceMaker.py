@@ -15,11 +15,18 @@ from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 sys.path.append(".")
 
-def TestMe(rcvClass):
-    print(rcvClass)
+ # Has support for: Client info sent via Customer class (company or person)
+ # Support for multiple product sent by OrderedProducList class 
 
-def MakeInvoice(products, customer):
-    NEWLINE_DISTANCE = 15
+def MakeInvoice(products, customer, shippingCost):
+    NEW_LINE_11 = 15
+    NEW_LINE_9 = 12    
+    UM_0 = 'buc'
+
+    if(shippingCost > 0):
+        HAS_SHIPPING = True
+    else:
+        HAS_SHIPPING = False
 
     pdfmetrics.registerFont(TTFont('HelveticaNeue', 'HelveticaNeueCyr-Light.ttf'))
 
@@ -77,34 +84,60 @@ def MakeInvoice(products, customer):
         y = 599
         for a in splitedAddr:
             can.drawString(380, y, a)
-            y = y - 15
+            y = y - NEW_LINE_11
     else:
         y = 629
         for a in splitedAddr:
             can.drawString(380, y, a)
-            y = y - 15
+            y = y - NEW_LINE_11
 
-    # format product name to fit in the document
-    print(textwrap.fill(products.productName[0], 35))
+    PRICE_X_INDENT_MOST_RIGHT = 555
+    OOB_PRODUCT_Y_INDENT = 240
+    can.setFontSize(9)
+    ySubstractor = 0
+    y = 456  
+    finalPrice = []
+    totalPrice = 0
 
-    splitedProductName = textwrap.fill(products.productName[0], 50).split('\n')
+    for it in range(0,len(products.productName)):
+        print(it)
+        splitedProductName = textwrap.fill(products.productName[it], 50).split('\n')
+        indent = y
+        Xindent = 73
+        prettySpace = 0
+        for a in splitedProductName:
+            if(prettySpace > 0):
+                Xindent = 75 
+            else:
+                Xindent = 73
+            can.drawString(Xindent, indent, a)
+            indent = indent - NEW_LINE_9
+            ySubstractor = ySubstractor + 1 
+            prettySpace = prettySpace + 1
+        can.drawRightString(470, y, str(products.productPrice[it]))
+        can.drawString(350, y, str(products.productQuantity[it]))
+        can.drawString(295, y, UM_0)    
+        # multiply quantiy with price
+        finalPrice.insert(it, products.productQuantity[it] * products.productPrice[it])
+        can.drawRightString(PRICE_X_INDENT_MOST_RIGHT, y, str(finalPrice[it]))
+        y = y - ySubstractor * NEW_LINE_9 - 2
+        if(OOB_PRODUCT_Y_INDENT > y):
+            print("ERROR: There are too many products for this Invoice template!")
+            break
+        
+    can.setFontSize(11)
+    for it in finalPrice:
+        totalPrice = totalPrice + it
 
-    # add 1 product
-    # TODO : Add support for several products !
-    # TODO : Implement total sum calculation 
-
-    y = 456
-    for a in splitedProductName:
-        can.setFontSize(9)
-        can.drawString(73, y, a)
-        y = y - 12
-    #can.drawString(450, 456, str(products.productPrice[0]))
-    can.setFontSize(10)
+    if(HAS_SHIPPING):
+        can.drawRightString(PRICE_X_INDENT_MOST_RIGHT, 221, str(shippingCost))
+        totalPrice = totalPrice + shippingCost
     
-    can.drawRightString(470, 456, str(products.productPrice[0]))
-
-
-    can.setFontSize(10)
+    #draw subtotal
+    can.drawRightString(PRICE_X_INDENT_MOST_RIGHT, 201, str(totalPrice))
+    #draw total sum
+    can.setFontSize(12)
+    can.drawRightString(PRICE_X_INDENT_MOST_RIGHT, 178, str(totalPrice))
 
     # save the canvas 
     can.save()

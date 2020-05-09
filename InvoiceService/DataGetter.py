@@ -43,7 +43,14 @@ orderedProducts.productId.insert(0, productSheet.cell(row = 2, column = 1).value
 orderedProducts.productName.insert(0, productSheet.cell(row = 2, column = 2).value)
 orderedProducts.productPrice.insert(0, productSheet.cell(row = 2, column = 3).value)
 
+orderedProducts.productId.insert(1, productSheet.cell(row = 3, column = 1).value)
+orderedProducts.productName.insert(1, productSheet.cell(row = 3, column = 2).value)
+orderedProducts.productPrice.insert(1, productSheet.cell(row = 3, column = 3).value)
+
+orderedProducts.productQuantity.insert(0,2)
+orderedProducts.productQuantity.insert(1,1)
+
 print(orderedProducts.productId[0], ' ', orderedProducts.productName[0], ' ', orderedProducts.productPrice[0])
 
 #InvoiceMaker.TestMe(orderedProducts)
-InvoiceMaker.MakeInvoice(orderedProducts, customerInfo)
+InvoiceMaker.MakeInvoice(orderedProducts, customerInfo, 55)
