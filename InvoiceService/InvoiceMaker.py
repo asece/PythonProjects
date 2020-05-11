@@ -7,7 +7,7 @@ import sys
 
 import DataTypes
 import Logger
-import FileUtils as file
+import FileUtil as file
 
 from datetime import datetime
 from PyPDF2 import PdfFileWriter, PdfFileReader, PdfFileMerger
