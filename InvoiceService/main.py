@@ -21,11 +21,11 @@ orderedProds.productName.insert(0, Products.productName[0])
 orderedProds.productPrice.insert(0, Products.productPrice[0])
 orderedProds.productQuantity.insert(0, 2)
 
-InvoiceMaker.MakeInvoice(orderedProds, orderingClient, 15)
+InvoiceMaker.MakeInvoice(orderingClient, orderedProds, 15)
 
-#text = str(Products.productId[0]) + str(Products.productName[0]) + str(Products.productPrice[0])
-#Logger.Log(text)
 
+
+#Logger.Log("{}: {} {} {}".format(__name__, Products.productId[0], Products.productName[0], Products.productPrice[0]))
 #InvoiceMaker.TestMe(orderedProducts)
 #InvoiceMaker.MakeInvoice(orderedProducts, customerInfo, 55)
 #file.getAllClients()

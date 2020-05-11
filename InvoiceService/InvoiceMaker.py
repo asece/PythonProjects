@@ -6,6 +6,7 @@ import PyPDF2
 import sys
 
 import DataTypes
+import Logger
 import FileUtils as file
 
 from datetime import datetime
@@ -19,7 +20,11 @@ sys.path.append(".")
  # Has support for: Client info sent via Customer class (company or person)
  # Support for multiple product sent by OrderedProducList class 
 
-def MakeInvoice(products, customer, shippingCost):
+def MakeInvoice(customer, products, shippingCost):
+    """Makes an invoice using DataTypes::Customer class, 
+    DatTypes::OrderedProducList class and shippingCost - a int
+    There can only be one client, but the products can be many.
+    """
     NEW_LINE_11 = 15
     NEW_LINE_9 = 12    
     UM_0 = 'buc'
@@ -33,11 +38,15 @@ def MakeInvoice(products, customer, shippingCost):
 
     # get invoice series
     invoiceSeries = file.getInvoiceSeries()
+    
     print("Invoice series: ", invoiceSeries)
+    Logger.Log("{}: {} {}".format(__name__,"Invoice series: ", invoiceSeries))
 
     # get invoice number
     invoiceNumber = file.getInvoiceNumber()
+    
     print("Invoice number: ", invoiceNumber)
+    Logger.Log("{}: {} {}".format(__name__, "Invoice number: ", invoiceNumber))
 
     #make a copy of the invoice to work with
     src_dir="blank_invoice.pdf"
@@ -57,6 +66,7 @@ def MakeInvoice(products, customer, shippingCost):
     timestampStr = dateTimeObj.strftime("%d-%m-%Y")
     can.drawString(291, 696, timestampStr)
     print('Current Timestamp : ', timestampStr)
+    Logger.Log("{}: {} {}".format(__name__, 'Current Timestamp : ', timestampStr))
 
     # format the address to fit in the document
     wAddr = textwrap.fill(customer.address, 35)
@@ -89,7 +99,6 @@ def MakeInvoice(products, customer, shippingCost):
     totalPrice = 0
 
     for it in range(0,len(products.productName)):
-        print(it)
         splitedProductName = textwrap.fill(products.productName[it], 50).split('\n')
         indent = y
         Xindent = 73
@@ -113,6 +122,7 @@ def MakeInvoice(products, customer, shippingCost):
         y = y - ySubstractor * NEW_LINE_9 - 2
         if(OOB_PRODUCT_Y_INDENT > y):
             print("ERROR: There are too many products for this Invoice template!")
+            Logger.Log("{}: {}".format(__name__, "ERROR: There are too many products for this Invoice template!"))
             break
         
     can.setFontSize(11)

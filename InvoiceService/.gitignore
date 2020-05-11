@@ -4,3 +4,4 @@
 *.ttf
 invoice_*
 Logs
+*_venv
